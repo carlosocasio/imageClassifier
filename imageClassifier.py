@@ -2,13 +2,21 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 import numpy as np
 from tensorflow.keras.preprocessing import image
+import kagglehub
+
+# Download latest version
+path = kagglehub.model_download("utkarshsaxenadn/ai-vs-human/tensorFlow2/default")
+
+print("Path to model files:", path)
 
 # Load the trained model
-model = load_model('ResNet50V2-AIvsHumanGenImages.keras')
+path = path+'/ResNet50V2-AIvsHumanGenImages.keras'
+# model = load_model('ResNet50V2-AIvsHumanGenImages.keras')
+model = load_model(path)
 
 # Ask for user Input
-print("Please enter the full image name ...")
-img_path=input()
+# print("Please enter the full image name ...")
+# img_path=input()
 
 # Load an image for classification
 # img_path = 'example_image.jpg'  # Replace with actual image path
@@ -19,3 +27,4 @@ img_array = np.expand_dims(img_array, axis=0)  # Expand dims for batch processin
 # Predict
 predictions = model.predict(img_array)
 print("AI-generated" if predictions[0] > 0.5 else "Human-created")
+
