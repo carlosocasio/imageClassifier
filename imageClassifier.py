@@ -7,6 +7,9 @@ import pickle  #to load a saved model
 import base64  #to open .gif files in streamlit app
 from tensorflow.keras.preprocessing import image
 import kagglehub
+from io import StringIO
+
+
 
 # @st.cache_data(suppress_st_warning=True)
 @st.cache_data
@@ -44,8 +47,9 @@ if app_mode=='Home':
     st.image('ai-human.jpg')    
 
 elif app_mode == 'Prediction':     
-	st.subheader('Please upload a photo !')    
-	
+	st.subheader('Upload image !')    
+	img_path = st.file_uploader("Please upload an image")
+
 	if st.button("Predict"):        
 		file_ = open("einstein.jpg", "rb")        
 		contents = file_.read()        
@@ -57,7 +61,7 @@ elif app_mode == 'Prediction':
 		data_url_no = base64.b64encode(contents).decode("utf-8")
 		file.close()     
 
-		img_path = 'stallone.jpeg'  # Replace with actual image path
+		# img_path = 'stallone.jpeg'  # Replace with actual image path
 		img = image.load_img(img_path, target_size=(512, 512))  # ResNet50V2 input size
 		img_array = image.img_to_array(img) / 255.0  # Normalize
 		img_array = np.expand_dims(img_array, axis=0)  # Expand dims for batch processing
