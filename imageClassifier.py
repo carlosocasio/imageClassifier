@@ -57,12 +57,12 @@ elif app_mode == 'Prediction':
 		img_array = np.expand_dims(img_array, axis=0)  # Expand dims for batch processing
 
 
-		file_ = open(img_path, "rb")        
+		file_ = open("einstein.jpg", "rb")        
 		contents = file_.read()        
 		data_url = base64.b64encode(contents).decode("utf-8")        
 		file_.close()        
 
-		file = open(img_path, "rb")        
+		file = open("ai.jpg", "rb")        
 		contents = file.read()        
 		data_url_no = base64.b64encode(contents).decode("utf-8")
 		file.close()     
