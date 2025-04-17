@@ -52,19 +52,20 @@ elif app_mode == 'Prediction':
 	img_path = st.file_uploader("Please upload an image")
 	time.sleep(1)
 	if st.button("Predict"):        
-		file_ = open(img_path, "rb")        
+		img = image.load_img(img_path, target_size=(512, 512))  # ResNet50V2 input size
+		img_array = image.img_to_array(img) / 255.0  # Normalize
+		img_array = np.expand_dims(img_array, axis=0)  # Expand dims for batch processing
+
+
+		file_ = open(img, "rb")        
 		contents = file_.read()        
 		data_url = base64.b64encode(contents).decode("utf-8")        
 		file_.close()        
 
-		file = open(img_path, "rb")        
+		file = open(img, "rb")        
 		contents = file.read()        
 		data_url_no = base64.b64encode(contents).decode("utf-8")
 		file.close()     
-
-		img = image.load_img(img_path, target_size=(512, 512))  # ResNet50V2 input size
-		img_array = image.img_to_array(img) / 255.0  # Normalize
-		img_array = np.expand_dims(img_array, axis=0)  # Expand dims for batch processing
 		
                 # Predict
 		prediction = model.predict(img_array)
