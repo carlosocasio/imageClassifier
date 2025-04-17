@@ -47,12 +47,12 @@ elif app_mode == 'Prediction':
 	st.subheader('Please upload a photo !')    
 	
 	if st.button("Predict"):        
-		file_ = open("6m-rain.gif", "rb")        
+		file_ = open("einstein.jpg", "rb")        
 		contents = file_.read()        
 		data_url = base64.b64encode(contents).decode("utf-8")        
 		file_.close()        
 
-		file = open("green-cola-no.gif", "rb")        
+		file = open("ai.jpg", "rb")        
 		contents = file.read()        
 		data_url_no = base64.b64encode(contents).decode("utf-8")
 		file.close()     
