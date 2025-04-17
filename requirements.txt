@@ -8,3 +8,4 @@ Pillow
 seaborn
 scikit-learn
 tensorflow
+kagglehub
