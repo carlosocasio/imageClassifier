@@ -62,7 +62,7 @@ elif app_mode == 'Prediction':
 		img_array = image.img_to_array(img) / 255.0  # Normalize
 		img_array = np.expand_dims(img_array, axis=0)  # Expand dims for batch processing
 		
-    # Predict
+                # Predict
 		prediction = model.predict(img_array)
 		
 		if prediction[0] == 0 :            
@@ -71,3 +71,5 @@ elif app_mode == 'Prediction':
 		elif prediction[0] == 1 :
 			st.success('This is a Human generated image')
 			st.markdown(f'<img src="data:image/gif;base64,{data_url}" alt="cat gif">', unsafe_allow_html=True,)
+		else:
+			st.success('Not Sure!')
