@@ -7,6 +7,7 @@ import pickle  #to load a saved model
 import base64  #to open .gif files in streamlit app
 from tensorflow.keras.preprocessing import image
 import kagglehub
+import time
 from io import StringIO
 
 
@@ -43,7 +44,7 @@ path = path+'/ResNet50V2-AIvsHumanGenImages.keras'
 model = load_model(path)
 
 if app_mode=='Home':   
-    st.title('AI versus Human Image Classification:')      
+    st.title('AI vs Human Generated Image:')      
     st.image('ai-human.jpg')    
 
 elif app_mode == 'Prediction':     
