@@ -26,21 +26,15 @@ def get_value(val,my_dict):
 
 app_mode = st.sidebar.selectbox(':red[Select Page]',['Home','Upload and Predict']) #two pages
 
-# css="""
-# <style>
-#     [data-testid="stSidebar"] {
-#         background: LightBlue;
-# 		# color: blue;
-#     }
-# </style>
-# """
-# st.write(css, unsafe_allow_html=True)
-
-.css-1aumxhk {
-background-color: #011839;
-background-image: none;
-color: #ffffff
-}
+css="""
+<style>
+    [data-testid="stSidebar"] {
+        background: LightBlue;
+		# color: blue;
+    }
+</style>
+"""
+st.write(css, unsafe_allow_html=True)
 
 
 # Download latest version
