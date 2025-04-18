@@ -23,16 +23,30 @@ def get_value(val,my_dict):
 	for key,value in my_dict.items():        
 		if val == key:            
 			return value
+
 app_mode = st.sidebar.selectbox(':red[Select Page]',['Home','Upload and Predict']) #two pages
 
-css="""
+# css="""
+# <style>
+#     [data-testid="stSidebar"] {
+#         background: LightBlue;
+# 		# color: blue;
+#     }
+# </style>
+# """
+
+st.markdown(
+    """
 <style>
-    [data-testid="stSidebar"] {
-        background: LightBlue;
-		# color: blue;
-    }
+.sidebar .sidebar-content {
+    background-image: linear-gradient(#2e7bcf,#2e7bcf);
+    color: white;
+}
 </style>
-"""
+""",
+    unsafe_allow_html=True,
+)
+
 st.write(css, unsafe_allow_html=True)
 
 # Download latest version
