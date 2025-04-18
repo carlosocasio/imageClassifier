@@ -40,7 +40,7 @@ st.markdown(
     """
 <style>
 .sidebar .sidebar-content {
-    background-image: linear-gradient(#2e7bcf,#2e7bcf);
+    background-color: linear-gradient(#000000,#FFFFFF);
     color: red;
 }
 </style>
