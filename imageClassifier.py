@@ -44,8 +44,8 @@ path = path+'/ResNet50V2-AIvsHumanGenImages.keras'
 model = load_model(path)
 
 if app_mode=='Home':   
-    st.title('AI vs Human Generated Image:')      
-    st.image('ai-human.jpg')    
+    st.title('AI vs Human Generated Images')      
+    st.image('ai_human.jpg')    
 
 elif app_mode == 'Prediction':     
 	st.subheader('Upload image !')    
@@ -57,27 +57,23 @@ elif app_mode == 'Prediction':
 		img_array = np.expand_dims(img_array, axis=0)  # Expand dims for batch processing
 
 
-		file_ = open("einstein.jpg", "rb")        
-		contents = file_.read()        
-		data_url = base64.b64encode(contents).decode("utf-8")        
-		file_.close()        
+		# file_ = open("einstein.jpg", "rb")        
+		# contents = file_.read()        
+		# data_url = base64.b64encode(contents).decode("utf-8")        
+		# file_.close()        
 
-		file = open("ai.jpg", "rb")        
-		contents = file.read()        
-		data_url_no = base64.b64encode(contents).decode("utf-8")
-		file.close()     
+		# file = open("ai.jpg", "rb")        
+		# contents = file.read()        
+		# data_url_no = base64.b64encode(contents).decode("utf-8")
+		# file.close()     
 		
                 # Predict
 		prediction = model.predict(img_array)
 		
 		if prediction[0] > 0.5 :            
-			st.error('This is an AI generated image')
-			# st.markdown(f'<img src="data:image/gif;base64,{data_url_no}" alt="cat gif">', unsafe_allow_html=True,)
-			# st.markdown(f'<img src="data:image/gif;base64,{img_path}" alt="cat gif">', unsafe_allow_html=True,)
+			st.success('This is an AI generated image')
 			st.image(img_path, caption='AI generated image', use_container_width=True)
 		elif prediction[0] <= .5 :
 			st.success('This is a Human generated image')
-			# st.markdown(f'<img src="data:image/gif;base64,{data_url}" alt="cat gif">', unsafe_allow_html=True,)
-			# st.markdown(f'<img src="data:image/gif;base64,{img_path}" alt="cat gif">', unsafe_allow_html=True,)
 			st.image(img_path, caption='Human generated image', use_container_width=True)
 	
