@@ -34,6 +34,7 @@ app_mode = st.sidebar.selectbox(':red[Select Page]',['Home','Upload and Predict'
 #     }
 # </style>
 # """
+# st.write(css, unsafe_allow_html=True)
 
 st.markdown(
     """
@@ -46,8 +47,6 @@ st.markdown(
 """,
     unsafe_allow_html=True,
 )
-
-st.write(css, unsafe_allow_html=True)
 
 # Download latest version
 path = kagglehub.model_download("utkarshsaxenadn/ai-vs-human/tensorFlow2/default")
