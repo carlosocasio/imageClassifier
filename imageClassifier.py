@@ -29,7 +29,7 @@ app_mode = st.sidebar.selectbox(':blue[Select Page]',['Home','Upload and Predict
 css="""
 <style>
     [data-testid="stSidebar"] {
-        background: LightBlue;
+        background: Red;
 		# color: blue;
     }
 </style>
