@@ -73,9 +73,11 @@ elif app_mode == 'Prediction':
 		if prediction[0] > 0.5 :            
 			st.error('This is an AI generated image')
 			# st.markdown(f'<img src="data:image/gif;base64,{data_url_no}" alt="cat gif">', unsafe_allow_html=True,)
-			st.markdown(f'<img src="data:image/gif;base64,{img_path}" alt="cat gif">', unsafe_allow_html=True,)
+			# st.markdown(f'<img src="data:image/gif;base64,{img_path}" alt="cat gif">', unsafe_allow_html=True,)
+			st.image(img_path, caption='AI generated image', use_column_width=True)
 		elif prediction[0] <= .5 :
 			st.success('This is a Human generated image')
 			# st.markdown(f'<img src="data:image/gif;base64,{data_url}" alt="cat gif">', unsafe_allow_html=True,)
-			st.markdown(f'<img src="data:image/gif;base64,{img_path}" alt="cat gif">', unsafe_allow_html=True,)
+			# st.markdown(f'<img src="data:image/gif;base64,{img_path}" alt="cat gif">', unsafe_allow_html=True,)
+			st.image(img_path, caption='Human generated image', use_column_width=True)
 	
