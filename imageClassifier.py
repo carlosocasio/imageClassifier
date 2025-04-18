@@ -46,7 +46,7 @@ model = load_model(path)
 if app_mode=='Home':   
     st.title('Artificial Intelligence versus Human Intelligence')
     st.write("Upload images to determine if they are AI or Human generated images")
-    st.image('ai_human.jpg')    
+    st.image('ai-human.jpg')    
 
 elif app_mode == 'Prediction':     
 	st.subheader('AI or Human generated image')    
