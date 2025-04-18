@@ -24,12 +24,12 @@ def get_value(val,my_dict):
 		if val == key:            
 			return value
 
-app_mode = st.sidebar.selectbox(':gray[Select Page]',['Home','Upload and Predict']) #two pages
+app_mode = st.sidebar.selectbox(':green[Select Page]',['Home','Upload and Predict']) #two pages
 
 css="""
 <style>
     [data-testid="stSidebar"] {
-        background: #1d1c8a;
+        background: #FFFFFF;
 		# color: blue;
     }
 </style>
