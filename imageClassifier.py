@@ -50,7 +50,7 @@ if app_mode=='Home':
     st.write("Upload images to determine if they are AI or Human generated images")
     st.image('ai-human.jpg')    
 
-elif app_mode == 'Prediction':     
+elif app_mode == 'Upload and Predict':     
 	st.subheader('Is it an AI or Human generated image ?')    
 	img_path = st.file_uploader("Please upload an image")
 	time.sleep(1)
