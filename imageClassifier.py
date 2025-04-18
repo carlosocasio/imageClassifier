@@ -54,6 +54,21 @@ elif app_mode == 'Upload and Predict':
 	st.subheader('Is it an AI or Human generated image ?')    
 	img_path = st.file_uploader("Please upload an image")
 	time.sleep(1)
+
+	if uploaded_file is not None:
+	    st.success("Image uploaded successfully!")
+	    
+	    # Simulated processing with a progress bar
+	    progress_bar = st.progress(0)
+	    status_text = st.empty()
+	    
+	    for percent_complete in range(100):
+	        time.sleep(0.02)  # Simulate processing time
+	        progress_bar.progress(percent_complete + 1)
+	        status_text.text(f"Processing... {percent_complete + 1}%")
+	    
+	    st.success("Processing complete!")
+
 	if st.button("Predict"):        
 		img = image.load_img(img_path, target_size=(512, 512))  # ResNet50V2 input size
 		img_array = image.img_to_array(img) / 255.0  # Normalize
