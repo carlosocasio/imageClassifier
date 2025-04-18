@@ -30,7 +30,7 @@ css="""
 <style>
     [data-testid="stSidebar"] {
         background: #524f4f;
-        color: white;
+        font-color: white;
     }
 </style>
 """
