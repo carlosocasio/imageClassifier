@@ -59,12 +59,12 @@ elif app_mode == 'Prediction':
 
 		file_ = open("einstein.jpg", "rb")        
 		contents = file_.read()        
-		data_url = base64.b64encode(contents).decode("utf-8")        
+		data_url = base64.b64encode(img).decode("utf-8")        
 		file_.close()        
 
 		file = open("ai.jpg", "rb")        
 		contents = file.read()        
-		data_url_no = base64.b64encode(contents).decode("utf-8")
+		data_url_no = base64.b64encode(img).decode("utf-8")
 		file.close()     
 		
                 # Predict
