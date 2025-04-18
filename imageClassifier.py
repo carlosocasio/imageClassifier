@@ -55,7 +55,7 @@ elif app_mode == 'Upload and Predict':
 	img_path = st.file_uploader("Please upload an image")
 	time.sleep(1)
 
-	if uploaded_file is not None:
+	if img_path is not None:
 	    st.success("Image uploaded successfully!")
 	    
 	    # Simulated processing with a progress bar
