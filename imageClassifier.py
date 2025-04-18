@@ -24,7 +24,7 @@ def get_value(val,my_dict):
 		if val == key:            
 			return value
 
-app_mode = st.sidebar.selectbox(':primary[Select Page]',['Home','Upload and Predict']) #two pages
+app_mode = st.sidebar.selectbox(':primary[Select Page]',['Home','Upload Image', 'Predict']) #two pages
 
 css="""
 <style>
@@ -50,7 +50,7 @@ if app_mode=='Home':
     st.write("Upload images to determine if they are AI or Human generated images")
     st.image('ai-human.jpg')    
 
-elif app_mode == 'Upload and Predict':     
+elif app_mode == 'Upload Image':     
 	st.subheader('Is it an AI or Human generated image ?')    
 	img_path = st.file_uploader("Please upload an image")
 	time.sleep(1)
@@ -70,8 +70,8 @@ elif app_mode == 'Upload and Predict':
 	    # st.success("Processing complete!")
 	    progress_bar=st.empty()
 
+elif app_mode == 'Predict':
 	if st.button("Predict"):  
-		progress_bar=st.empty()
 		img = image.load_img(img_path, target_size=(512, 512))  # ResNet50V2 input size
 		img_array = image.img_to_array(img) / 255.0  # Normalize
 		img_array = np.expand_dims(img_array, axis=0)  # Expand dims for batch processing
