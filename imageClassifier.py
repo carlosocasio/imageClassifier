@@ -68,6 +68,7 @@ elif app_mode == 'Upload and Predict':
 	        status_text.text(f"Processing... {percent_complete + 1}%")
 	    
 	    st.success("Processing complete!")
+	    progress_bar=st.empty()
 
 	if st.button("Predict"):        
 		img = image.load_img(img_path, target_size=(512, 512))  # ResNet50V2 input size
