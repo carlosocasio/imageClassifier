@@ -49,7 +49,7 @@ if app_mode=='Home':
     st.image('ai_human.jpg')    
 
 elif app_mode == 'Prediction':     
-	st.subheader('Upload image !')    
+	st.subheader('AI or Human generated image')    
 	img_path = st.file_uploader("Please upload an image")
 	time.sleep(1)
 	if st.button("Predict"):        
