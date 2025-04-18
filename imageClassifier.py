@@ -23,7 +23,7 @@ def get_value(val,my_dict):
 	for key,value in my_dict.items():        
 		if val == key:            
 			return value
-app_mode = st.sidebar.selectbox(':blue[Select Page]',['Home','Prediction']) #two pages
+app_mode = st.sidebar.selectbox(':red[Select Page]',['Home','Upload and Predict']) #two pages
 
 css="""
 <style>
