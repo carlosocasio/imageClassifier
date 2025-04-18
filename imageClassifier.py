@@ -44,7 +44,8 @@ path = path+'/ResNet50V2-AIvsHumanGenImages.keras'
 model = load_model(path)
 
 if app_mode=='Home':   
-    st.title('AI vs Human Generated Images')      
+    st.title('Artificial Intelligence versus Human Intelligence')
+    st.write("Upload images to determine if they are AI or Human generated images")
     st.image('ai_human.jpg')    
 
 elif app_mode == 'Prediction':     
