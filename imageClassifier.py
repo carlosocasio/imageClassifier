@@ -58,8 +58,7 @@ elif app_mode == 'Upload Image':
 
 	if img_path is not None:
 	    st.success("Image uploaded successfully!")
-            st.success("Select Predict on the side menu to image.")
-	    
+		
 	    # Simulated processing with a progress bar
 	    progress_bar = st.progress(0)
 	    status_text = st.empty()
