@@ -75,8 +75,8 @@ elif app_mode == 'Upload and Predict':
 	    status_placeholder.empty()
 
 	if st.button("Predict"):
-                progress_placeholder.empty()
-                status_placeholder.empty()
+		progress_placeholder.empty()
+		status_placeholder.empty()
 		st.session_state.button = False
 		img = image.load_img(img_path, target_size=(512, 512))  # ResNet50V2 input size
 		img_array = image.img_to_array(img) / 255.0  # Normalize
