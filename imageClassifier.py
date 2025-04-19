@@ -10,8 +10,6 @@ import kagglehub
 import time
 from io import StringIO
 
-
-
 # @st.cache_data(suppress_st_warning=True)
 @st.cache_data
 def get_fvalue(val):    
@@ -26,15 +24,15 @@ def get_value(val,my_dict):
 
 app_mode = st.sidebar.selectbox(':primary[Select Page]',['Home','Upload and Predict']) #two pages
 
-css="""
-<style>
-    [data-testid="stSidebar"] {
-        background: #524f4f;
-        # font-color: white;
-    }
-</style>
-"""
-st.write(css, unsafe_allow_html=True)
+# css="""
+# <style>
+#     [data-testid="stSidebar"] {
+#         background: #524f4f;
+#         # font-color: white;
+#     }
+# </style>
+# """
+# st.write(css, unsafe_allow_html=True)
 
 
 # Download latest version
@@ -59,8 +57,6 @@ elif app_mode == 'Upload and Predict':
 	status_placeholder = st.empty()
 
 	if img_path is not None:
-	    # st.success("Image uploaded successfully!")
-		
 	    # Simulated processing with a progress bar
 	    progress = progress_placeholder.progress(0)
 	    # status_text = st.empty()
@@ -70,7 +66,6 @@ elif app_mode == 'Upload and Predict':
 	        progress.progress(percent_complete + 1)
 	        status_placeholder.text(f"Processing... {percent_complete + 1}%")
 	    
-	    # st.success("Image uploaded successfully! Select Predict to analyze image")
 	    progress_placeholder.empty()
 	    status_placeholder.empty()
 
@@ -88,7 +83,7 @@ elif app_mode == 'Upload and Predict':
 		prediction = model.predict(img_array)
 		
 		if prediction[0] > 0.5 :            
-			st.success('This is an AI generated image')
+			st.error('This is an AI generated image')
 			st.image(img_path, caption='AI generated image', use_container_width=True)
 		elif prediction[0] <= .5 :
 			st.success('This is a Human generated image')
