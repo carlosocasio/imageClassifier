@@ -74,20 +74,20 @@ elif app_mode == 'Upload and Predict':
 	    progress_placeholder.empty()
 	    status_placeholder.empty()
 
-	# if st.button("Predict"):  
-	# 	progress_bar=st.empty()
-	# 	status_text = st.empty()
-	# 	st.session_state.button = False
-	# 	img = image.load_img(img_path, target_size=(512, 512))  # ResNet50V2 input size
-	# 	img_array = image.img_to_array(img) / 255.0  # Normalize
-	# 	img_array = np.expand_dims(img_array, axis=0)  # Expand dims for batch processing
+	if st.button("Predict"):  
+		progress_bar=st.empty()
+		status_text = st.empty()
+		st.session_state.button = False
+		img = image.load_img(img_path, target_size=(512, 512))  # ResNet50V2 input size
+		img_array = image.img_to_array(img) / 255.0  # Normalize
+		img_array = np.expand_dims(img_array, axis=0)  # Expand dims for batch processing
 
- #                # Predict
-	# 	prediction = model.predict(img_array)
+                # Predict
+		prediction = model.predict(img_array)
 		
-	# 	if prediction[0] > 0.5 :            
-	# 		st.success('This is an AI generated image')
-	# 		st.image(img_path, caption='AI generated image', use_container_width=True)
-	# 	elif prediction[0] <= .5 :
-	# 		st.success('This is a Human generated image')
-	# 		st.image(img_path, caption='Human generated image', use_container_width=True)
+		if prediction[0] > 0.5 :            
+			st.success('This is an AI generated image')
+			st.image(img_path, caption='AI generated image', use_container_width=True)
+		elif prediction[0] <= .5 :
+			st.success('This is a Human generated image')
+			st.image(img_path, caption='Human generated image', use_container_width=True)
