@@ -72,7 +72,7 @@ elif app_mode == 'Upload and Predict':
 	    
 	    st.success("Image uploaded successfully! Select Predict to analyze image")
 	    progress_placeholder=st.empty()
-	    status_placeholder=st.empty()
+	    status_placeholder.text=st.empty()
 
 	# if st.button("Predict"):  
 	# 	progress_bar=st.empty()
