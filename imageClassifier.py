@@ -54,7 +54,7 @@ elif app_mode == 'Upload Image':
 	st.subheader('Is it an AI or Human generated image ?')    
 	img_path = st.file_uploader("Please upload an image")
 	st.session_state.img = img_path
-	time.sleep(1)
+	# time.sleep(1)
 
 	if img_path is not None:
 	    st.success("Image uploaded successfully!")
