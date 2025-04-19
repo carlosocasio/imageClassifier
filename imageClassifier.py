@@ -3,11 +3,11 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 import numpy as np
 import pandas as pd
-import pickle  #to load a saved model
-import base64  #to open .gif files in streamlit app
+# import pickle  #to load a saved model
+# import base64  #to open .gif files in streamlit app
 from tensorflow.keras.preprocessing import image
 import kagglehub
-import time
+# import time
 from io import StringIO
 
 
@@ -68,7 +68,7 @@ elif app_mode == 'Upload Image':
 	        progress_bar.progress(percent_complete + 1)
 	        status_text.text(f"Processing... {percent_complete + 1}%")
 	    
-	    # st.success("Processing complete!")
+	    st.success("Processing complete! Please select Predict!")
 	    progress_bar=st.empty()
 
 elif app_mode == 'Predict':
@@ -77,24 +77,12 @@ elif app_mode == 'Predict':
 		img_array = image.img_to_array(img) / 255.0  # Normalize
 		img_array = np.expand_dims(img_array, axis=0)  # Expand dims for batch processing
 
-
-		# file_ = open("einstein.jpg", "rb")        
-		# contents = file_.read()        
-		# data_url = base64.b64encode(contents).decode("utf-8")        
-		# file_.close()        
-
-		# file = open("ai.jpg", "rb")        
-		# contents = file.read()        
-		# data_url_no = base64.b64encode(contents).decode("utf-8")
-		# file.close()     
-		
                 # Predict
 		prediction = model.predict(img_array)
 		
 		if prediction[0] > 0.5 :            
 			st.success('This is an AI generated image')
-			st.image(img_path, caption='AI generated image', use_container_width=True)
+			st.image(st.session_state.img, caption='AI generated image', use_container_width=True)
 		elif prediction[0] <= .5 :
 			st.success('This is a Human generated image')
-			st.image(img_path, caption='Human generated image', use_container_width=True)
-	
+			st.image(st.session_state.img, caption='Human generated image', use_container_width=True)
