@@ -56,23 +56,24 @@ elif app_mode == 'Upload and Predict':
 	# time.sleep(1)
 
 	# Create a placeholder for the progress bar
-	progress_bar = st.empty()
-	status_text = st.empty()
+	progress_bar_placeholder = st.empty()
+	status_text_placeholder = st.empty()
 
 	if img_path is not None:
 	    # st.success("Image uploaded successfully!")
 		
 	    # Simulated processing with a progress bar
-	    progress_bar = st.progress(0)
+	    progress_bar = progress_bar_placeholder.progress(0)
 	    status_text = st.empty()
-	    
+
 	    for percent_complete in range(100):
 	        time.sleep(0.02)  # Simulate processing time
 	        progress_bar.progress(percent_complete + 1)
-	        status_text.text(f"Processing... {percent_complete + 1}%")
+	        status_text_placeholder.text(f"Processing... {percent_complete + 1}%")
 	    
 	    st.success("Image uploaded successfully! Select Predict to analyze image")
-	    progress_bar=st.empty()
+	    progress_bar_placeholder=st.empty()
+            status_text_placeholder=st.empty
 
 	if st.button("Predict"):  
 		progress_bar=st.empty()
