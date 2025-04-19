@@ -50,7 +50,7 @@ if app_mode=='Home':
 
 elif app_mode == 'Upload and Predict':     
 	st.subheader('Is it an AI or Human generated image ?')    
-	img_path = st.file_uploader("Please upload an image")
+	img_path = st.file_uploader("Please upload an image, wait a few seconds and click Predict")
 
 	# Create a placeholder for the progress bar
 	progress_placeholder = st.empty()
