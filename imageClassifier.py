@@ -24,7 +24,7 @@ def get_value(val,my_dict):
 		if val == key:            
 			return value
 
-app_mode = st.sidebar.selectbox(':primary[Select Page]',['Home','Upload Image', 'Predict']) #two pages
+app_mode = st.sidebar.selectbox(':primary[Select Page]',['Home','Upload and Predict']) #two pages
 
 css="""
 <style>
@@ -50,10 +50,9 @@ if app_mode=='Home':
     st.write("Upload images to determine if they are AI or Human generated images")
     st.image('ai-human.jpg')    
 
-elif app_mode == 'Upload Image':     
+elif app_mode == 'Upload and Predict':     
 	st.subheader('Is it an AI or Human generated image ?')    
 	img_path = st.file_uploader("Please upload an image")
-	st.session_state.img = img_path
 	# time.sleep(1)
 
 	if img_path is not None:
@@ -68,13 +67,12 @@ elif app_mode == 'Upload Image':
 	        progress_bar.progress(percent_complete + 1)
 	        status_text.text(f"Processing... {percent_complete + 1}%")
 	    
-	    st.success("Processing complete. Image uploaded successfully!")
-	    st.success("Select Predict on  side menu to analyze image.")
+	    st.success("Image uploaded successfully!")
+	    st.success("Select Predict to analyze image.")
 	    progress_bar=st.empty()
 
-elif app_mode == 'Predict':
 	if st.button("Predict"):  
-		img = image.load_img(st.session_state.img, target_size=(512, 512))  # ResNet50V2 input size
+		img = image.load_img(img_path, target_size=(512, 512))  # ResNet50V2 input size
 		img_array = image.img_to_array(img) / 255.0  # Normalize
 		img_array = np.expand_dims(img_array, axis=0)  # Expand dims for batch processing
 
@@ -83,7 +81,7 @@ elif app_mode == 'Predict':
 		
 		if prediction[0] > 0.5 :            
 			st.success('This is an AI generated image')
-			st.image(st.session_state.img, caption='AI generated image', use_container_width=True)
+			st.image(img_path, caption='AI generated image', use_container_width=True)
 		elif prediction[0] <= .5 :
 			st.success('This is a Human generated image')
-			st.image(st.session_state.img, caption='Human generated image', use_container_width=True)
+			st.image(img_path, caption='Human generated image', use_container_width=True)
