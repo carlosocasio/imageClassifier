@@ -55,6 +55,10 @@ elif app_mode == 'Upload and Predict':
 	img_path = st.file_uploader("Please upload an image")
 	# time.sleep(1)
 
+	# Create a placeholder for the progress bar
+	progress_bar = st.empty()
+	status_text = st.empty()
+
 	if img_path is not None:
 	    # st.success("Image uploaded successfully!")
 		
