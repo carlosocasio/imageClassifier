@@ -53,6 +53,7 @@ if app_mode=='Home':
 elif app_mode == 'Upload Image':     
 	st.subheader('Is it an AI or Human generated image ?')    
 	img_path = st.file_uploader("Please upload an image")
+	st.session_state.img = img_path
 	time.sleep(1)
 
 	if img_path is not None:
@@ -72,7 +73,7 @@ elif app_mode == 'Upload Image':
 
 elif app_mode == 'Predict':
 	if st.button("Predict"):  
-		img = image.load_img(img_path, target_size=(512, 512))  # ResNet50V2 input size
+		img = image.load_img(st.session_state.img, target_size=(512, 512))  # ResNet50V2 input size
 		img_array = image.img_to_array(img) / 255.0  # Normalize
 		img_array = np.expand_dims(img_array, axis=0)  # Expand dims for batch processing
 
