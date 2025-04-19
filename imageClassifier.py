@@ -53,27 +53,26 @@ if app_mode=='Home':
 elif app_mode == 'Upload and Predict':     
 	st.subheader('Is it an AI or Human generated image ?')    
 	img_path = st.file_uploader("Please upload an image")
-	# time.sleep(1)
 
 	# Create a placeholder for the progress bar
-	progress_bar_placeholder = st.empty()
-	status_text_placeholder = st.empty()
+	progress_placeholder = st.empty()
+	status_placeholder = st.empty()
 
 	if img_path is not None:
 	    # st.success("Image uploaded successfully!")
 		
 	    # Simulated processing with a progress bar
-	    progress_bar = progress_bar_placeholder.progress(0)
+	    progress = progress_placeholder.progress(0)
 	    # status_text = st.empty()
 
 	    for percent_complete in range(100):
 	        time.sleep(0.02)  # Simulate processing time
-	        progress_bar.progress(percent_complete + 1)
-	        status_text_placeholder.text(f"Processing... {percent_complete + 1}%")
+	        progress.progress(percent_complete + 1)
+	        status_placeholder.text(f"Processing... {percent_complete + 1}%")
 	    
 	    st.success("Image uploaded successfully! Select Predict to analyze image")
-	    progress_bar_placeholder=st.empty()
-	    status_text_placeholder=st.empty()
+	    progress_placeholder=st.empty()
+	    status_placeholder=st.empty()
 
 	if st.button("Predict"):  
 		progress_bar=st.empty()
