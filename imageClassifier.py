@@ -73,7 +73,7 @@ elif app_mode == 'Upload and Predict':
 	if st.button("Predict"):  
 		progress_bar=st.empty()
 		status_text = st.empty()
-		st.session_state.show_button = False
+		st.session_state.button = False
 		img = image.load_img(img_path, target_size=(512, 512))  # ResNet50V2 input size
 		img_array = image.img_to_array(img) / 255.0  # Normalize
 		img_array = np.expand_dims(img_array, axis=0)  # Expand dims for batch processing
