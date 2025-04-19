@@ -70,13 +70,15 @@ elif app_mode == 'Upload and Predict':
 	        progress.progress(percent_complete + 1)
 	        status_placeholder.text(f"Processing... {percent_complete + 1}%")
 	    
-	    st.success("Image uploaded successfully! Select Predict to analyze image")
+	    # st.success("Image uploaded successfully! Select Predict to analyze image")
 	    progress_placeholder.empty()
 	    status_placeholder.empty()
 
 	if st.button("Predict"):
-		progress_placeholder.empty()
-		status_placeholder.empty()
+		# # Create a placeholder for the progress bar
+		# progress_placeholder = st.empty()
+		# status_placeholder = st.empty()
+
 		st.session_state.button = False
 		img = image.load_img(img_path, target_size=(512, 512))  # ResNet50V2 input size
 		img_array = image.img_to_array(img) / 255.0  # Normalize
