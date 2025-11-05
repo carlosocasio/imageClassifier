@@ -39,7 +39,7 @@ st.write(css, unsafe_allow_html=True)
 # path = kagglehub.model_download("utkarshsaxenadn/ai-vs-human/tensorFlow2/default")
 # print("Path to model files:", path)
 # path = kagglehub.model_download("utkarshsaxenadn/ai-vs-human/ai-vs-human/tensorFlow2/default")
-path = kagglehub.model_download("utkarshsaxenadn/ai-vs-human/ai-vs-human/default")
+path = kagglehub.model_download("utkarshsaxenadn/ai-vs-human/1")
 print("Path to downloaded model:", path)
 
 # Load the trained model
