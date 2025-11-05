@@ -38,12 +38,13 @@ st.write(css, unsafe_allow_html=True)
 
 # Download latest version
 # path = kagglehub.model_download("utkarshsaxenadn/ai-vs-human/tensorFlow2/default")
-path = kagglehub.model_download("utkarshsaxenadn/ai-vs-human/tensorflow2/default/1/ResNet50V2-AIvsHumanGenImages.keras")
+# path = kagglehub.model_download("utkarshsaxenadn/ai-vs-human/tensorflow2/default/1/ResNet50V2-AIvsHumanGenImages.keras")
+path = kagglehub.model_download("utkarshsaxenadn/ai-vs-human/tensorflow2/default")
 
 print("Path to downloaded model:", path)
 
 # Load the trained model (Use the single-input classifier version) :
-# path = path + "/AIvsHuman_ResNet50V2.h5"
+path = path + "/1/ResNet50V2-AIvsHumanGenImages.keras"
 model = load_model(path, compile=False)
 
 if app_mode=='Home':   
