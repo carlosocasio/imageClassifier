@@ -1,54 +1,56 @@
-import os
 import streamlit as st
 import numpy as np
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
-import kagglehub  # make sure you have kagglehub installed
+import os
+import time
 
-# --- Step 1: Download the model from Kaggle ---
-st.write("Downloading model from Kaggle...")
-MODEL_CACHE_DIR = os.path.expanduser("~/.cache/kagglehub/models")
-MODEL_HANDLE = "utkarshsaxenadn/ai-vs-human/tensorFlow2/default/1"
+# -----------------------------
+# Path to your locally downloaded model
+# -----------------------------
+MODEL_PATH = os.path.expanduser("~/Downloads/ResNet152V2-AIvsHumanGenImages.keras")
 
-try:
-    model_path = kagglehub.model_download(MODEL_HANDLE)
-    st.write(f"Model downloaded to: {model_path}")
-except Exception as e:
-    st.error(f"Error downloading model: {e}")
+# -----------------------------
+# Load the model
+# -----------------------------
+st.title("AI vs Human Image Classifier")
+
+if not os.path.exists(MODEL_PATH):
+    st.error(
+        f"Model not found at {MODEL_PATH}. \n"
+        "Please download the ResNet152V2-AIvsHumanGenImages.keras file to this path first."
+    )
     st.stop()
 
-# --- Step 2: Convert the legacy SavedModel to Keras 3 format ---
-K3_MODEL_PATH = os.path.join(os.getcwd(), "ResNet152V2-AIvsHumanGenImages_v3.keras")
-
-if not os.path.exists(K3_MODEL_PATH):
-    st.write("Converting legacy model to Keras 3 format...")
-    import tensorflow as tf
-
-    try:
-        legacy_model = tf.keras.models.load_model(model_path)
-        legacy_model.save(K3_MODEL_PATH)
-        st.write(f"Conversion complete! Saved as: {K3_MODEL_PATH}")
-    except Exception as e:
-        st.error(f"Error converting model: {e}")
-        st.stop()
-else:
-    st.write(f"Keras 3 model already exists at: {K3_MODEL_PATH}")
-
-# --- Step 3: Load the Keras 3 model ---
-st.write("Loading Keras 3 model...")
-model = load_model(K3_MODEL_PATH, compile=False)
+st.write("Loading model, please wait...")
+model = load_model(MODEL_PATH, compile=False)
 st.success("Model loaded successfully!")
 
-# --- Step 4: Streamlit app for prediction ---
-st.title("AI vs Human Image Classifier")
-uploaded_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
+# -----------------------------
+# Upload and predict
+# -----------------------------
+uploaded_file = st.file_uploader("Upload an image to classify", type=["jpg", "jpeg", "png"])
 
 if uploaded_file:
+    # Show a progress bar while processing
+    progress_placeholder = st.empty()
+    status_placeholder = st.empty()
+    progress = progress_placeholder.progress(0)
+
+    for i in range(100):
+        time.sleep(0.01)  # simulate processing
+        progress.progress(i + 1)
+        status_placeholder.text(f"Processing... {i + 1}%")
+
+    progress_placeholder.empty()
+    status_placeholder.empty()
+
+    # Load and preprocess image
     img = image.load_img(uploaded_file, target_size=(512, 512))
     img_array = image.img_to_array(img) / 255.0
     img_array = np.expand_dims(img_array, axis=0)
 
-    st.write("Making prediction...")
+    # Make prediction
     prediction = model.predict(img_array)
 
     if prediction[0] > 0.5:
