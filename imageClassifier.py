@@ -39,7 +39,8 @@ st.write(css, unsafe_allow_html=True)
 # Download latest version
 # path = kagglehub.model_download("utkarshsaxenadn/ai-vs-human/tensorFlow2/default")
 # path = kagglehub.model_download("utkarshsaxenadn/ai-vs-human/tensorflow2/default/1/ResNet50V2-AIvsHumanGenImages.keras")
-path = kagglehub.model_download("utkarshsaxenadn/ai-vs-human/tensorflow2/default/1/ResNet152V2-AIvsHumanGenImages.keras")
+# path = kagglehub.model_download("utkarshsaxenadn/ai-vs-human/tensorflow2/default/1/ResNet152V2-AIvsHumanGenImages.keras")
+path = kagglehub.model_download("utkarshsaxenadn/ai-vs-human/tensorFlow2/default")
 
 # resnet152_model_path = '/kaggle/input/ai-vs-human/tensorflow2/default/1/ResNet152V2-AIvsHumanGenImages.keras'
 
