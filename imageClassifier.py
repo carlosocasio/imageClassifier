@@ -90,7 +90,7 @@ elif app_mode == "Upload and Predict":
                 img_array = np.expand_dims(img_array, axis=0)
 
                 # Predict
-                prediction = model.predict(img_array)
+                prediction = model.predict([img_array, img_array])
 
                 confidence = float(prediction[0][0])
 
